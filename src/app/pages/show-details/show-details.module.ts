@@ -4,7 +4,7 @@ import { ShowDetailsRoutingModule } from './show-details.route';
 import { ShowDetailsComponent } from './show-details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/app/shared/material/material.module';
-
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 
 @NgModule({
@@ -14,7 +14,8 @@ import { MaterialModule } from 'src/app/shared/material/material.module';
     ShowDetailsRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    NgMultiSelectDropDownModule.forRoot(),
   ]
 })
 export class ShowDetailsModule { }

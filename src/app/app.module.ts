@@ -18,6 +18,7 @@ import { SignupComponent } from './admin/signup/signup.component';
 import { VerifyEmailComponent } from './admin/verify-email/verify-email.component';
 import { ForgotPasswordComponent } from './admin/forgot-password/forgot-password.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 
 
@@ -44,6 +45,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    NgMultiSelectDropDownModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
