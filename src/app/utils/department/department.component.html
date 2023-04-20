@@ -1,0 +1,21 @@
+<div class="wrapper-container">
+  <form class="half-width">
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Department Name</mat-label>
+      <input matInput required />
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea matInput required></textarea>
+    </mat-form-field>
+
+    <div class="button-groups">
+      <button mat-raised-button class="submit-btn">Add Department</button>
+      <button mat-raised-button color="warn">Reset</button>
+    </div>
+  </form>
+  <div class="illustration-container">
+    <img [src]="'assets/images/Department.jpg'" alt="Department" />
+    </div>
+</div>

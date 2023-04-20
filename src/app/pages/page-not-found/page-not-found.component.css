@@ -1,0 +1,15 @@
+.page-not-found-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px;
+  width: 200px;
+  top: 50%;
+  left: 50%;
+  background-color: var(--color-black);
+  color: var(--color-light-grey);
+}
+.page-not-found{
+  position: relative;
+  left: 30%;
+}

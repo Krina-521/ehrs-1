@@ -1,0 +1,194 @@
+<div class="profile-container">
+  <!-- <div class="image-upload-container" *ngIf="user$ | async as user">
+    <img width="120" height="120" [src]="user.photoURL ?? 'assets/images/image-placeholder.png'" />
+    <button mat-mini-fab color="accent" (click)="inputField.click()">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </div> -->
+  <!-- <input type="file" hidden #inputField (change)="uploadImage($event, user$)" /> -->
+  <div class="upper-section-profile">
+  <div class="image-upload-container">
+    <img width="180" height="180" [src]="'assets/images/image-placeholder.png'" />
+  </div>
+  <form class="form-container full-width">
+    <!-- Personal Details -->
+      <div class="personal-details-form">
+        <span class="personal-details-header">
+          <i class="fa fa-cog" aria-hidden="true"></i>
+          <h2>Personal Details</h2>
+        </span>
+      <div class="two-fields">
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>First Name</mat-label>
+          <input matInput class="firstname" type="text" placeholder="George" required/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Last Name</mat-label>
+          <input matInput class="lastname" type="text" placeholder="Smith" required />
+        </mat-form-field>
+      </div>
+
+      <div class="two-fields">
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Date of birth</mat-label>
+          <input matInput [matDatepicker]="picker">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="bloodgroup-options half-width">
+          <mat-label> Blood Group</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let bloodGroup of bloodGroups" [value]="bloodGroup">
+              {{ bloodGroup }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="two-fields">
+        <mat-form-field appearance="outline" class="gender-options half-width">
+          <mat-label> Gender</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let gender of genders" [value]="gender">
+              {{ gender }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="gender-options half-width">
+          <mat-label>Relationship Status</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let status of relationShip" [value]="status">
+              {{ status }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+
+      <!-- <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput class="email" type="email" placeholder="georgesmith@gmail.com" required/>
+      </mat-form-field> -->
+
+      <!-- <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Phone</mat-label>
+        <input matInput class="phone" type="tel" placeholder="Ex. 9875120154" required/>
+      </mat-form-field> -->
+
+
+
+    </div>
+    <!-- Contact Details -->
+    <div class="contact-details-form">
+      <span class="contact-details-header">
+        <i class="fa fa-cog" aria-hidden="true"></i>
+        <h2>Contact Details</h2>
+      </span>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Address</mat-label>
+        <input matInput class="address" type="text" placeholder="" required />
+      </mat-form-field>
+
+      <div class="two-fields">
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>City</mat-label>
+          <input matInput class="city" type="text" placeholder=""  />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>State</mat-label>
+          <input matInput class="state" type="text" placeholder="" required />
+        </mat-form-field>
+      </div>
+
+      <div class="two-fields">
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Zip Code</mat-label>
+          <input matInput class="zip-code" type="text" placeholder="" minlength="6" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Country</mat-label>
+          <input matInput class="country" type="text" placeholder="" required />
+        </mat-form-field>
+      </div>
+
+      <div class="two-fields">
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Cell Phone</mat-label>
+          <input matInput class="zip-code" type="tel" placeholder="" minlength="10" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Emergency Contact Person Name</mat-label>
+          <input matInput class="emergency-contact-person" type="text" placeholder="" required />
+        </mat-form-field>
+      </div>
+
+      <div class="two-fields">
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Emergency Contact</mat-label>
+          <input matInput class="emergency-contact-number" type="tel" placeholder="" minlength="10" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Emergency Contact Person Relation</mat-label>
+          <input matInput class="emergency-contact-person-relation" type="text" placeholder="" required />
+        </mat-form-field>
+      </div>
+
+      <div class="two-fields">
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Phone</mat-label>
+          <input matInput class="phone" type="tel" placeholder="" minlength="10" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Fax</mat-label>
+          <input matInput class="fax" type="text" placeholder=""/>
+        </mat-form-field>
+      </div>
+
+      <div class="two-fields">
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Email Address</mat-label>
+          <input matInput class="email-address" type="email" placeholder="" required/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Secondary Email</mat-label>
+          <input matInput class="secondary-email" type="text" placeholder=""/>
+        </mat-form-field>
+      </div>
+
+    </div>
+    <div class="button-groups">
+      <button mat-raised-button class="submit-btn" type="submit">Submit</button>
+      <button mat-raised-button color="warn" type="button">Reset</button>
+    </div>
+    </form>
+
+  </div>
+
+  <!-- <div class="lower-section-profile">
+    <form class="password-form">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Current password</mat-label>
+        <input matInput class="current-password" type="password" required/>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>New password</mat-label>
+        <input matInput class="new-password" type="password" required/>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Confirm password</mat-label>
+        <input matInput class="confirm-password" type="password" required/>
+      </mat-form-field>
+    </form>
+  </div> -->
+</div>

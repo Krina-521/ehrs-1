@@ -1,0 +1,10 @@
+.main-container{
+  display: flex;
+  flex-direction: row;
+}
+.side-conainter{
+  width: 100%;
+  padding: 10px;
+  display: flew;
+  flex-direction: column;
+}

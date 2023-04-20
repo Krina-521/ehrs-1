@@ -1,0 +1,46 @@
+<div class="add-details-container">
+  <form>
+    <mat-form-field appearance="fill" class="details-options">
+      <mat-label>Select option to add details</mat-label>
+      <mat-select (valueChange)="onSelection($event)">
+        <mat-option *ngFor="let detail of details" [value]="detail.value">
+          {{ detail.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+  <div [ngSwitch]="selectedOption">
+    <!-- Department -->
+    <div *ngSwitchDefault>
+      <app-department></app-department>
+    </div>
+    <!-- Doctor -->
+    <div *ngSwitchCase="'doctor'">
+      <app-doctor></app-doctor>
+    </div>
+    <!-- Patients -->
+    <div *ngSwitchCase="'patient'">
+      <app-patients></app-patients>
+    </div>
+    <!-- Nurse -->
+    <div *ngSwitchCase="'nurse'">
+      <app-nurse></app-nurse>
+    </div>
+    <!-- Pharmacist -->
+    <div *ngSwitchCase="'pharmacist'">
+      <app-pharmacist></app-pharmacist>
+    </div>
+    <!-- Laboratorist -->
+    <div *ngSwitchCase="'laboratorist'">
+      <app-laboratorist></app-laboratorist>
+    </div>
+    <!-- Accountant -->
+    <div *ngSwitchCase="'accountant'">
+      <app-accountant></app-accountant>
+    </div>
+    <!-- Receptionist -->
+    <div *ngSwitchCase="'receptionist'">
+      <app-receptionist></app-receptionist>
+    </div>
+  </div>
+</div>
