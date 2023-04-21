@@ -53,7 +53,7 @@ export class ShowDetailsComponent {
       textField: 'item_text',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 5,
+      itemsShowLimit: 4,
       allowSearchFilter: true
     };
   }

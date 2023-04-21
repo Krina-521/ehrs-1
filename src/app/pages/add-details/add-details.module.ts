@@ -12,7 +12,7 @@ import { DepartmentComponent } from 'src/app/utils/department/department.compone
 import { PharmacistComponent } from 'src/app/utils/pharmacist/pharmacist.component';
 import { LaboratoristComponent } from 'src/app/utils/laboratorist/laboratorist.component';
 import { ReceptionistComponent } from 'src/app/utils/receptionist/receptionist.component';
-
+import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -32,6 +32,7 @@ import { ReceptionistComponent } from 'src/app/utils/receptionist/receptionist.c
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+    MatNativeDateModule
   ]
 })
 export class AddDetailsModule { }

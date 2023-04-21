@@ -1,62 +1,132 @@
 <div class="wrapper-container">
-  <form class="half-width">
+  <form class="half-width" [formGroup]="receptionistForm" (ngSubmit)="onSubmit()">
     <mat-form-field class="full-width" appearance="outline">
-      <mat-label>Accountant Name</mat-label>
-      <input matInput type="text" required />
+      <mat-label>Receptionist Name</mat-label>
+      <input matInput type="text" required formControlName="receptionistName"/>
+      <mat-error *ngIf="(
+        receptionistForm.get('receptionistName')?.touched &&
+        receptionistForm.get('receptionistName')?.errors &&
+        receptionistForm.get('receptionistName')?.hasError('required')
+      )">
+        Name is required
+      </mat-error>
+      <mat-error *ngIf="(
+        receptionistForm.get('receptionistName')?.touched &&
+        receptionistForm.get('receptionistName')?.errors &&
+        receptionistForm.get('receptionistName')?.hasError('minlength')
+      )">
+        Name must be of 3 or more characters
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field class="full-width" appearance="outline">
       <mat-label>Email Address</mat-label>
-      <input matInput type="email" required />
+      <input matInput type="email" required formControlName="receptionistEmail" />
+      <mat-error *ngIf="(
+        receptionistForm.get('receptionistEmail')?.touched &&
+        receptionistForm.get('receptionistEmail')?.errors &&
+        receptionistForm.get('receptionistEmail')?.hasError('required')
+      )">
+        Email is required
+      </mat-error>
     </mat-form-field>
 
 
     <div class="input-group">
       <mat-form-field appearance="outline" class="gender-options">
         <mat-label>Select Gender</mat-label>
-        <mat-select>
+        <mat-select formControlName="receptionistGender">
           <mat-option *ngFor="let gender of genders" [value]="gender">
             {{ gender }}
           </mat-option>
         </mat-select>
+        <mat-error *ngIf="(
+        receptionistForm.get('receptionistGender')?.touched &&
+        receptionistForm.get('receptionistGender')?.errors &&
+        receptionistForm.get('receptionistGender')?.hasError('required')
+      )">
+        Gender is required
+      </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Date of birth</mat-label>
-        <input matInput [matDatepicker]="picker">
+        <input matInput [matDatepicker]="picker" formControlName="receptionistBirthDate">
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="(
+        receptionistForm.get('receptionistBirthDate')?.touched &&
+        receptionistForm.get('receptionistBirthDate')?.errors &&
+        receptionistForm.get('receptionistBirthDate')?.hasError('required')
+      )">
+        Please pick your birth date
+      </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="bloodgroup-options">
         <mat-label>Select Blood Group</mat-label>
-        <mat-select>
+        <mat-select formControlName="receptionistBloodGroup">
           <mat-option *ngFor="let bloodGroup of bloodGroups" [value]="bloodGroup">
             {{ bloodGroup }}
           </mat-option>
         </mat-select>
+        <mat-error *ngIf="(
+        receptionistForm.get('receptionistBloodGroup')?.touched &&
+        receptionistForm.get('receptionistBloodGroup')?.errors &&
+        receptionistForm.get('receptionistBloodGroup')?.hasError('required')
+      )">
+        Blood Group is required
+      </mat-error>
       </mat-form-field>
     </div>
 
     <mat-form-field class="full-width" appearance="outline">
       <mat-label>Address</mat-label>
-      <input matInput type="text" required />
+      <input matInput type="text" required  formControlName="receptionistAddress"/>
+      <mat-error *ngIf="(
+        receptionistForm.get('receptionistAddress')?.touched &&
+        receptionistForm.get('receptionistAddress')?.errors &&
+        receptionistForm.get('receptionistAddress')?.hasError('required')
+      )">
+        Address is required
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field class="full-width" appearance="outline">
       <mat-label>Phone Number</mat-label>
-      <input matInput type="tel" required />
+      <input matInput type="tel" required formControlName="receptionistPhoneNumber" />
+      <mat-error *ngIf="(
+        receptionistForm.get('receptionistPhoneNumber')?.touched &&
+        receptionistForm.get('receptionistPhoneNumber')?.errors &&
+        receptionistForm.get('receptionistPhoneNumber')?.hasError('required')
+      )">
+        Phone Number is required
+      </mat-error>
+      <mat-error *ngIf="(
+        receptionistForm.get('receptionistPhoneNumber')?.touched &&
+        receptionistForm.get('receptionistPhoneNumber')?.errors &&
+        receptionistForm.get('receptionistPhoneNumber')?.hasError('required')
+      )">
+        Please enter a valid phone number
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field class="full-width" appearance="outline">
       <mat-label>Department Name (optional) </mat-label>
-      <input matInput type="text" />
+      <input matInput type="text" formControlName="receptionistDepartment" />
+      <!-- <mat-error *ngIf="(
+        receptionistForm.get('receptionistDepartment')?.touched &&
+        receptionistForm.get('receptionistDepartment')?.errors &&
+        receptionistForm.get('receptionistDepartment')?.hasError('required')
+      )">
+        Department is required
+      </mat-error> -->
     </mat-form-field>
 
     <div class="button-groups">
-      <button mat-raised-button class="submit-btn">Add Accountant</button>
-      <button mat-raised-button color="warn">Reset</button>
+      <button mat-raised-button class="submit-btn" [disabled]="!receptionistForm.valid">Add Accountant</button>
+      <button mat-raised-button color="warn" (click)="onReset()">Reset</button>
     </div>
   </form>
   <div class="illustration-container half-width">

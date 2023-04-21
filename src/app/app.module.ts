@@ -19,6 +19,7 @@ import { VerifyEmailComponent } from './admin/verify-email/verify-email.componen
 import { ForgotPasswordComponent } from './admin/forgot-password/forgot-password.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import {MatNativeDateModule} from '@angular/material/core';
 
 
 
@@ -46,6 +47,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     FormsModule,
     ReactiveFormsModule,
     NgMultiSelectDropDownModule.forRoot(),
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

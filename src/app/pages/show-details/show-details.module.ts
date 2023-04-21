@@ -5,6 +5,7 @@ import { ShowDetailsComponent } from './show-details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import {MatNativeDateModule} from '@angular/material/core';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     ReactiveFormsModule,
     MaterialModule,
     NgMultiSelectDropDownModule.forRoot(),
+    MatNativeDateModule
   ]
 })
 export class ShowDetailsModule { }

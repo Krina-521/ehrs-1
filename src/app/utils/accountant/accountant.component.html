@@ -1,62 +1,132 @@
 <div class="wrapper-container">
-  <form class="half-width">
+  <form class="half-width" [formGroup]="accountantForm">
     <mat-form-field class="full-width" appearance="outline">
       <mat-label>Accountant Name</mat-label>
-      <input matInput type="text" required />
+      <input matInput type="text" required formControlName="accountantName"/>
+      <mat-error *ngIf="(
+        accountantForm.get('accountantName')?.touched &&
+        accountantForm.get('accountantName')?.errors &&
+        accountantForm.get('accountantName')?.hasError('required')
+      )">
+        Name is required
+      </mat-error>
+      <mat-error *ngIf="(
+        accountantForm.get('accountantName')?.touched &&
+        accountantForm.get('accountantName')?.errors &&
+        accountantForm.get('accountantName')?.hasError('minlength')
+      )">
+        Name must be of 3 or more characters
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field class="full-width" appearance="outline">
       <mat-label>Email Address</mat-label>
-      <input matInput type="email" required />
+      <input matInput type="email" required formControlName="accountantEmail" />
+      <mat-error *ngIf="(
+        accountantForm.get('accountantEmail')?.touched &&
+        accountantForm.get('accountantEmail')?.errors &&
+        accountantForm.get('accountantEmail')?.hasError('required')
+      )">
+        Email is required
+      </mat-error>
     </mat-form-field>
 
 
     <div class="input-group">
       <mat-form-field appearance="outline" class="gender-options">
         <mat-label>Select Gender</mat-label>
-        <mat-select>
+        <mat-select formControlName="accountantGender">
           <mat-option *ngFor="let gender of genders" [value]="gender">
             {{ gender }}
           </mat-option>
         </mat-select>
+        <mat-error *ngIf="(
+        accountantForm.get('accountantGender')?.touched &&
+        accountantForm.get('accountantGender')?.errors &&
+        accountantForm.get('accountantGender')?.hasError('required')
+      )">
+        Gender is required
+      </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Date of birth</mat-label>
-        <input matInput [matDatepicker]="picker">
+        <input matInput [matDatepicker]="picker" formControlName="accountantBirthDate">
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="(
+        accountantForm.get('accountantBirthDate')?.touched &&
+        accountantForm.get('accountantBirthDate')?.errors &&
+        accountantForm.get('accountantBirthDate')?.hasError('required')
+      )">
+        Please pick your birth date
+      </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="bloodgroup-options">
         <mat-label>Select Blood Group</mat-label>
-        <mat-select>
+        <mat-select formControlName="accountantBloodGroup">
           <mat-option *ngFor="let bloodGroup of bloodGroups" [value]="bloodGroup">
             {{ bloodGroup }}
           </mat-option>
         </mat-select>
+        <mat-error *ngIf="(
+        accountantForm.get('accountantBloodGroup')?.touched &&
+        accountantForm.get('accountantBloodGroup')?.errors &&
+        accountantForm.get('accountantBloodGroup')?.hasError('required')
+      )">
+        Blood Group is required
+      </mat-error>
       </mat-form-field>
     </div>
 
     <mat-form-field class="full-width" appearance="outline">
       <mat-label>Address</mat-label>
-      <input matInput type="text" required />
+      <input matInput type="text" required formControlName="accountantAddress"/>
+      <mat-error *ngIf="(
+        accountantForm.get('accountantAddress')?.touched &&
+        accountantForm.get('accountantAddress')?.errors &&
+        accountantForm.get('accountantAddress')?.hasError('required')
+      )">
+        Address is required
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field class="full-width" appearance="outline">
       <mat-label>Phone Number</mat-label>
-      <input matInput type="tel" required />
+      <input matInput type="tel" required formControlName="accountantPhoneNumber" />
+      <mat-error *ngIf="(
+        accountantForm.get('accountantPhoneNumber')?.touched &&
+        accountantForm.get('accountantPhoneNumber')?.errors &&
+        accountantForm.get('accountantPhoneNumber')?.hasError('required')
+      )">
+        Phone Number is required
+      </mat-error>
+      <mat-error *ngIf="(
+        accountantForm.get('accountantPhoneNumber')?.touched &&
+        accountantForm.get('accountantPhoneNumber')?.errors &&
+        accountantForm.get('accountantPhoneNumber')?.hasError('minlength')
+      )">
+        Please enter a valid phone number
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field class="full-width" appearance="outline">
       <mat-label>Department Name (optional) </mat-label>
-      <input matInput type="text" />
+      <input matInput type="text" formControlName="accountantDepartment"/>
+      <!-- <mat-error *ngIf="(
+        accountantForm.get('accountantDepartment')?.touched &&
+        accountantForm.get('accountantDepartment')?.errors &&
+        accountantForm.get('accountantDepartment')?.hasError('required')
+      )">
+        Department is required
+      </mat-error> -->
     </mat-form-field>
 
     <div class="button-groups">
-      <button mat-raised-button class="submit-btn">Add Accountant</button>
-      <button mat-raised-button color="warn">Reset</button>
+      <button mat-raised-button class="submit-btn" [disabled]="!accountantForm.valid">Add Accountant</button>
+      <button mat-raised-button color="warn" (click)="onReset()">Reset</button>
     </div>
   </form>
   <div class="illustration-container half-width">
