@@ -3,14 +3,14 @@ import { CommonDataService } from 'src/app/services/common-data.service';
 // import { AuthService } from '../auth.service';
 // import { ImageUploadService } from '../services/image-upload.service';
 import { HotToastService } from '@ngneat/hot-toast';
-import { User } from 'firebase/auth';
+// import { User } from 'firebase/auth';
 import { concatMap } from 'rxjs';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent {
   // user$ = this.authService.currentUser$;
@@ -22,7 +22,7 @@ export class ProfileComponent {
     private common: CommonDataService,
     private _fb: FormBuilder,
     private toast: HotToastService
-  ){ }
+  ) {}
 
   ngOnInit(): void {
     this.genders = this.common.getGenders();
@@ -50,83 +50,83 @@ export class ProfileComponent {
         phone: [''],
         fax: [''],
         email: ['', [Validators.required, Validators.email]],
-        secondaryemail: ['', Validators.email]
-      })
-    })
+        secondaryemail: ['', Validators.email],
+      }),
+    });
   }
 
-  get personaldetails(){
+  get personaldetails() {
     return this.profileForm.get('personaldetails');
   }
-  get contactdetails(){
+  get contactdetails() {
     return this.profileForm.get('contactdetails');
   }
 
-
-  get firstname(){
+  get firstname() {
     return this.profileForm.get('personaldetails')?.get('firstname');
   }
-  get lastname(){
+  get lastname() {
     return this.profileForm.get('personaldetails')?.get('lastname');
   }
-  get birthday(){
+  get birthday() {
     return this.profileForm.get('personaldetails')?.get('birthday');
   }
-  get bloodGroup(){
+  get bloodGroup() {
     return this.profileForm.get('personaldetails')?.get('bloodGroup');
   }
-  get gender(){
+  get gender() {
     return this.profileForm.get('personaldetails')?.get('gender');
   }
-  get relation(){
+  get relation() {
     return this.profileForm.get('personaldetails')?.get('relation');
   }
-  get address(){
+  get address() {
     return this.profileForm.get('contactdetails')?.get('address');
   }
-  get city(){
+  get city() {
     return this.profileForm.get('contactdetails')?.get('city');
   }
-  get state(){
+  get state() {
     return this.profileForm.get('contactdetails')?.get('state');
   }
-  get zipcode(){
+  get zipcode() {
     return this.profileForm.get('contactdetails')?.get('zipcode');
   }
-  get country(){
+  get country() {
     return this.profileForm.get('contactdetails')?.get('country');
   }
-  get cellphone(){
+  get cellphone() {
     return this.profileForm.get('contactdetails')?.get('cellphone');
   }
-  get emergencyPersonName(){
+  get emergencyPersonName() {
     return this.profileForm.get('contactdetails')?.get('emergencyPersonName');
   }
-  get emergencyContact(){
+  get emergencyContact() {
     return this.profileForm.get('contactdetails')?.get('emergencyContact');
   }
-  get emergencyContactRelation(){
-    return this.profileForm.get('contactdetails')?.get('emergencyContactRelation');
+  get emergencyContactRelation() {
+    return this.profileForm
+      .get('contactdetails')
+      ?.get('emergencyContactRelation');
   }
-  get phone(){
+  get phone() {
     return this.profileForm.get('contactdetails')?.get('contactdetails');
   }
-  get fax(){
+  get fax() {
     return this.profileForm.get('contactdetails')?.get('fax');
   }
-  get email(){
+  get email() {
     return this.profileForm.get('contactdetails')?.get('email');
   }
-  get secondaryemail(){
+  get secondaryemail() {
     return this.profileForm.get('contactdetails')?.get('secondaryemail');
   }
-  resetForm(){
+  resetForm() {
     this.profileForm.reset();
   }
-  onSubmit(){
+  onSubmit() {
     console.log(this.profileForm.value);
     this.profileForm.reset;
-
   }
   // uploadImage(event: any, user: User){
   //   this.imageUploadService.uploadImage(event.target.files[0], `images/profile/${user.email}/${user.uid}`)

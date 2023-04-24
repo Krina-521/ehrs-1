@@ -9,3 +9,9 @@
 
 https://www.youtube.com/watch?v=S20PCL9e_ks
 NodeJs and JWT Token Authentication | how to use json web token in Node js
+
+
+Things to do
+
+>> reusablity of mat-error (ngSwitch in place og ngIf)
+>> header in add-details components

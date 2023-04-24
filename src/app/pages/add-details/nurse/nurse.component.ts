@@ -1,24 +1,29 @@
 import { Component } from '@angular/core';
 import { CommonDataService } from 'src/app/services/common-data.service';
-import { FormControl, FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  FormBuilder,
+  FormArray,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-nurse',
   templateUrl: './nurse.component.html',
-  styleUrls: ['./nurse.component.css']
+  styleUrls: ['./nurse.component.css'],
 })
 export class NurseComponent {
   genders!: string[];
   bloodGroups!: string[];
+  departments!: string[];
   nurseForm!: FormGroup;
-  constructor(
-    private common: CommonDataService,
-    private _fb: FormBuilder
-    ){}
+  constructor(private common: CommonDataService, private _fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.genders = this.common.getGenders();
     this.bloodGroups = this.common.getBloodGroups();
+    this.departments = this.common.getDepartment();
 
     this.nurseForm = this._fb.group({
       nurseName: ['', [Validators.required, Validators.minLength(3)]],
@@ -29,12 +34,12 @@ export class NurseComponent {
       nurseBloodGroup: ['', [Validators.required]],
       nurseAddress: ['', [Validators.required]],
       nursePhoneNumber: ['', [Validators.required]],
-    })
+    });
   }
-  onReset(){
+  onReset() {
     this.nurseForm.reset();
   }
-  onSubmit(){
+  onSubmit() {
     console.log(this.nurseForm.value);
     this.nurseForm.reset();
   }

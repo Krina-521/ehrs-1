@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -19,7 +19,9 @@ import { VerifyEmailComponent } from './admin/verify-email/verify-email.componen
 import { ForgotPasswordComponent } from './admin/forgot-password/forgot-password.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
-import {MatNativeDateModule} from '@angular/material/core';
+import { MatNativeDateModule } from '@angular/material/core';
+import { AuthService } from './services/auth.service';
+import { HotToastModule } from '@ngneat/hot-toast';
 // import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 // import { JwtService } from './services/jwt.service';
 
@@ -31,8 +33,6 @@ import {MatNativeDateModule} from '@angular/material/core';
 //     allowedDomains: ['localhost:4200'] // replace with your domain
 //   };
 // }
-
-
 
 @NgModule({
   declarations: [
@@ -47,7 +47,7 @@ import {MatNativeDateModule} from '@angular/material/core';
     VerifyEmailComponent,
     ForgotPasswordComponent,
     PageNotFoundComponent,
-],
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -57,6 +57,7 @@ import {MatNativeDateModule} from '@angular/material/core';
     ReactiveFormsModule,
     NgMultiSelectDropDownModule.forRoot(),
     MatNativeDateModule,
+    HotToastModule.forRoot(),
     // JwtModule.forRoot({
     //   jwtOptionsProvider:{
     //     provide: JWT_OPTIONS,
@@ -65,7 +66,7 @@ import {MatNativeDateModule} from '@angular/material/core';
     //   }
     // })
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [AuthService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

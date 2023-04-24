@@ -1,23 +1,26 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CommonDataService {
+  constructor() {}
 
-  constructor() { }
-
+  departments: string[] = ['Radiological', 'Ortho', 'Neurological'];
   genders: string[] = ['Female', 'Male', 'Other'];
-  bloodGroups: string[] = ['A+', 'A-', 'B+' , 'B-', 'AB+', 'AB-', 'O+', 'O-'];
+  bloodGroups: string[] = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
   relationShip: string[] = ['Single', 'Married'];
 
-  getGenders(){
+  getDepartment() {
+    return this.departments;
+  }
+  getGenders() {
     return this.genders;
   }
-  getBloodGroups(){
+  getBloodGroups() {
     return this.bloodGroups;
   }
-  getRelationshipStatus(){
+  getRelationshipStatus() {
     return this.relationShip;
   }
 }

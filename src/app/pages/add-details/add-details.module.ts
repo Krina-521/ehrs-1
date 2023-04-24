@@ -4,15 +4,15 @@ import { AddDetailsRoutingModule } from './add-details.route';
 import { AddDetailsComponent } from './add-details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/app/shared/material/material.module';
-import { DoctorComponent } from 'src/app/utils/doctor/doctor.component';
-import { PatientsComponent } from 'src/app/utils/patients/patients.component';
-import { NurseComponent } from 'src/app/utils/nurse/nurse.component';
-import { AccountantComponent } from 'src/app/utils/accountant/accountant.component';
-import { DepartmentComponent } from 'src/app/utils/department/department.component';
-import { PharmacistComponent } from 'src/app/utils/pharmacist/pharmacist.component';
-import { LaboratoristComponent } from 'src/app/utils/laboratorist/laboratorist.component';
-import { ReceptionistComponent } from 'src/app/utils/receptionist/receptionist.component';
-import {MatNativeDateModule} from '@angular/material/core';
+import { DoctorComponent } from './doctor/doctor.component';
+import { PatientsComponent } from './patients/patients.component';
+import { NurseComponent } from './nurse/nurse.component';
+import { AccountantComponent } from 'src/app/pages/add-details/accountant/accountant.component';
+import { DepartmentComponent } from './department/department.component';
+import { PharmacistComponent } from './pharmacist/pharmacist.component';
+import { LaboratoristComponent } from './laboratorist/laboratorist.component';
+import { ReceptionistComponent } from './receptionist/receptionist.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import {MatNativeDateModule} from '@angular/material/core';
     DepartmentComponent,
     PharmacistComponent,
     LaboratoristComponent,
-    ReceptionistComponent
+    ReceptionistComponent,
   ],
   imports: [
     CommonModule,
@@ -32,7 +32,7 @@ import {MatNativeDateModule} from '@angular/material/core';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    MatNativeDateModule
-  ]
+    MatNativeDateModule,
+  ],
 })
-export class AddDetailsModule { }
+export class AddDetailsModule {}

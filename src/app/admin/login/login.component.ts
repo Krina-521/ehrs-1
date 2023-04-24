@@ -3,8 +3,8 @@ import { NonNullableFormBuilder, Validators, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
-import { AuthService } from 'src/app/auth.service';
-
+import { map, of } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,7 @@ import { AuthService } from 'src/app/auth.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup | any;
-  private loginFormSubmitAttempt: boolean = false;
+
   isLoggedIn: boolean = false;
 
   constructor(
@@ -39,18 +39,19 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get('password');
   }
 
-  login(){
-    if(this.email == ''){
+  login() {
+    if (this.email == '') {
       alert('Please enter email address');
       return;
     }
-    if(this.password == ''){
+    if (this.password == '') {
       alert('Please enter email address');
       return;
     }
     this.authService.login(this.email, this.password);
   }
-  signInWithGoogle(){
+
+  signInWithGoogle() {
     this.authService.signInWithGoogle();
   }
 
@@ -63,15 +64,18 @@ export class LoginComponent implements OnInit {
 
     this.authService
       .login(email, password)
-      .subscribe(() => {
-        this._snackBar.open('Login Successfully', "OK",{
-          duration: 3000,
-          verticalPosition: 'top',
-          horizontalPosition: 'center'
-        });
-        this.router.navigate(['/home']);
-      });
-      this.loginFormSubmitAttempt = true;
-      this.isLoggedIn = true;
+      .pipe(
+        map((isLoggedIn) => {
+          this.toast.observe({
+            success: 'Congrats! You are all signed up',
+            loading: 'Signing in...',
+            error: ({ message }) => `${message}`,
+          });
+          this.router.navigate(['/home']);
+          this.isLoggedIn = isLoggedIn;
+          return of(null);
+        })
+      )
+      .subscribe();
   }
 }

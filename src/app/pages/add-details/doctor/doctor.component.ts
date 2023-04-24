@@ -1,23 +1,32 @@
 import { Component } from '@angular/core';
 import { CommonDataService } from 'src/app/services/common-data.service';
-import { FormGroup, FormBuilder, FormArray, FormControl, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  FormArray,
+  FormControl,
+  Validators,
+} from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
+
 @Component({
   selector: 'app-doctor',
   templateUrl: './doctor.component.html',
-  styleUrls: ['./doctor.component.css']
+  styleUrls: ['./doctor.component.css'],
 })
 export class DoctorComponent {
   genders!: string[];
   bloodGroups!: string[];
+  departments!: string[];
   doctorForm!: FormGroup;
-  constructor(
-    private common: CommonDataService,
-    private _fb: FormBuilder
-    ){}
+  filteredBloodGroups!: Observable<string[]>;
+  constructor(private common: CommonDataService, private _fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.genders = this.common.getGenders();
     this.bloodGroups = this.common.getBloodGroups();
+    this.departments = this.common.getDepartment();
 
     this.doctorForm = this._fb.group({
       doctorName: ['', [Validators.required, Validators.minLength(3)]],
@@ -28,36 +37,51 @@ export class DoctorComponent {
       doctorBloodGroup: ['', [Validators.required]],
       doctorAddress: ['', [Validators.required]],
       doctorPhone: ['', [Validators.required, Validators.minLength(10)]],
-    })
+    });
+
+    this.filteredBloodGroups = this.doctorForm
+      .get('doctorBloodGroup')
+      .valueChanges.pipe(
+        startWith(''),
+        map((value: string) => this._filter(value || ''))
+      );
   }
-  get doctorName(){
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.bloodGroups.filter((option) =>
+      option.toLowerCase().includes(filterValue)
+    );
+  }
+
+  get doctorName() {
     return this.doctorForm.get('doctorName');
   }
-  get doctorEmail(){
+  get doctorEmail() {
     return this.doctorForm.get('doctorEmail');
   }
-  get doctorDepartment(){
+  get doctorDepartment() {
     return this.doctorForm.get('doctorDepartment');
   }
-  get doctorGender(){
+  get doctorGender() {
     return this.doctorForm.get('doctorGender');
   }
-  get doctorBirthdate(){
+  get doctorBirthdate() {
     return this.doctorForm.get('doctorBirthdate');
   }
-  get doctorBloodGroup(){
+  get doctorBloodGroup() {
     return this.doctorForm.get('doctorBloodGroup');
   }
-  get doctorAddress(){
+  get doctorAddress() {
     return this.doctorForm.get('doctorAddress');
   }
-  get doctorPhone(){
+  get doctorPhone() {
     return this.doctorForm.get('doctorPhone');
   }
-  onReset(){
+  onReset() {
     this.doctorForm.reset();
   }
-  onSubmit(){
+  onSubmit() {
     console.log(this.doctorForm.value);
     this.doctorForm.reset();
   }
