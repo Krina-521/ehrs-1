@@ -17,9 +17,10 @@
 
 .sidenav-container{
   width: 250px;
-  height: 1000px;
+  height: 100vh;
   background-color: var(--color-medium-grey);
   margin: 0 !important;
+  position: fixed;
 }
 .sidenav-items{
   display: flex;

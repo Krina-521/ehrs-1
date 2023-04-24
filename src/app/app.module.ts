@@ -20,8 +20,17 @@ import { ForgotPasswordComponent } from './admin/forgot-password/forgot-password
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import {MatNativeDateModule} from '@angular/material/core';
+// import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
+// import { JwtService } from './services/jwt.service';
 
-
+// export function jwtOptionsFactory(jwtService: JwtService) {
+//   return {
+//     tokenGetter: () => {
+//       return jwtService.getToken();
+//     },
+//     allowedDomains: ['localhost:4200'] // replace with your domain
+//   };
+// }
 
 
 
@@ -47,7 +56,14 @@ import {MatNativeDateModule} from '@angular/material/core';
     FormsModule,
     ReactiveFormsModule,
     NgMultiSelectDropDownModule.forRoot(),
-    MatNativeDateModule
+    MatNativeDateModule,
+    // JwtModule.forRoot({
+    //   jwtOptionsProvider:{
+    //     provide: JWT_OPTIONS,
+    //     useFactory: jwtOptionsFactory,
+    //     deps: [JwtService]
+    //   }
+    // })
   ],
   providers: [],
   bootstrap: [AppComponent]
